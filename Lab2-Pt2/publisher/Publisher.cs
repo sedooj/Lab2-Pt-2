@@ -1,4 +1,4 @@
-namespace Lab2_Pt2;
+namespace Lab2_Pt2.publisher;
 
 public sealed class Publisher
 {
