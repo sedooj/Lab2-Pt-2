@@ -1,65 +1,63 @@
 ﻿using Lab2_Pt2;
-using Lab2_Pt2.books;
-using Lab2_Pt2.publisher;
+using Lab2_Pt2.model;
 
-var publisher = new PublisherBuilder()
-    .SetName("CoolBooks Publishing")
-    .Build();
-
-var author_Fred = new AuthorBuilder()
-    .SetName("Fred Derf")
-    .SetAge(43)
-    .Build();
-
-var author_Freeman = new AuthorBuilder()
-    .SetName("Mr Freeman")
-    .SetAge(34)
-    .Build();
-
-var book = new BookBuilder()
-    .SetEditionId(751)
-    .SetTitle("Life is Live")
-    .SetReleaseDate("14:51 14-05-2024")
-    .SetPublisher(publisher)
-    .SetGenre("Fantasy")
-    .Build();
-
-book.AddAuthor(author_Fred);
-
-var textBook = new TextBookBuilder()
-    .SetEditionId(82342345)
-    .SetTitle("C# for dummies")
-    .SetReleaseDate("24-02-1999")
-    .SetPublisher(publisher)
-    .SetSubject("Programming")
-    .Build();
-
-textBook.AddAuthor(author_Fred);
-textBook.AddAuthor(author_Freeman);
-
-
-var magazine = new MagazineBuilder()
-    .SetEditionId(9152411293)
-    .SetTitle("Save urself")
-    .SetReleaseDate("10-01-2020")
-    .SetPublisher(publisher)
-    .SetHeadline("How to protect urself while covid")
-    .Build();
-
-PrintEdition[] library = new PrintEdition[]
+class Program
 {
-    book,
-    textBook,
-    magazine
-};
+    public static void Main()
+    {
+        var publisher = new Publisher.Builder()
+            .WithName("CoolBooks Publishing")
+            .Build();
 
-foreach (var item in library)
-{
-    Console.WriteLine(item.ToString());
+        var authorFred = new Author.Builder()
+            .WithName("Fred Derf")
+            .WithAge(43)
+            .Build();
 
-    item.Publish();
+        var authorFreeman = new Author.Builder()
+            .WithName("Mr Freeman")
+            .WithAge(34)
+            .Build();
 
-    Console.WriteLine();
+        var book = new Book.Builder()
+            .WithEditionId(751)
+            .WithTitle("Life is Live")
+            .WithReleaseDate("14:51 14-05-2024")
+            .WithPublisher(publisher)
+            .WithGenre("Fantasy")
+            .AddAuthor(authorFred)
+            .Build();
+
+        var textBook = new TextBook.Builder()
+            .WithEditionId(82342345)
+            .WithTitle("C# for dummies")
+            .WithReleaseDate("24-02-1999")
+            .WithPublisher(publisher)
+            .WithSubject("Programming")
+            .WithGenre("Fantasy")
+            .AddAuthor(authorFred)
+            .AddAuthor(authorFreeman)
+            .Build();
+
+        var magazine = new Magazine.Builder()
+            .WithEditionId(9152411293)
+            .WithTitle("Save urself")
+            .WithReleaseDate("10-01-2020")
+            .WithPublisher(publisher)
+            .WithGenre("Science")
+            .WithHeadline("How to protect urself while covid")
+            .Build();
+
+        PrintedEdition[] library =
+        [
+            book,
+            textBook,
+            magazine
+        ];
+
+        foreach (var item in library)
+        {
+            Console.WriteLine(item.ToString());
+        }
+    }
 }
-
-Console.WriteLine(book.ToString());
