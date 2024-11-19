@@ -5,11 +5,6 @@ public class Magazine(long editionId, string title, string releaseDate, Publishe
 {
     public string Headline { get; set; } = headline;
     
-    public override void PrintData()
-    {
-        Console.WriteLine("Magazine ({0}):\nTitle: {1}\nHeadline: {2}", EditionID, Title, Headline);
-    }
-    
     public override string ToString()
     {
         return $"{base.ToString()}, Headline: {Headline}";

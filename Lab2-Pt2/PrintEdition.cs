@@ -16,8 +16,6 @@ public abstract class PrintEdition(long editionId, string title, string releaseD
         author.AddWork(this);
     }
     
-    public abstract void PrintData();
-
     private string GetAuthors()
     {
         return Authors.Count > 0
