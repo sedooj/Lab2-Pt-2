@@ -1,3 +1,4 @@
+using Lab2_Pt2.publisher;
 using Lab2_Pt2.repository;
 
 namespace Lab2_Pt2;

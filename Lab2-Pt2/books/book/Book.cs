@@ -1,3 +1,5 @@
+using Lab2_Pt2.publisher;
+
 namespace Lab2_Pt2.books;
 
 public class Book(long editionId, string title, string releaseDate, Publisher publisher, string genre)
